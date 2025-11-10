@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../shared/styles/global-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="wrapper">
+    <div class="login-container">
+      <div class="linear">
+        <img src="../../assets/img/logo-establishment-login.png" alt="" class="logo-establishment-size">
+        <h1>RESIDENTIAL APP</h1>
+      </div>
+      <div class="login-form-container">
+        <img src="../../assets/img/profile-icon-login.png" alt="">
+        <form class="login-form">
+          <input type="email" class="ip-username" id="login-username" placeholder="EMAIL" required />
+          <div class="password-container">
+            <input type="password" class="ip-password" id="login-password" placeholder="PASSWORD" required>
+            <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword"></i>
+          </div>
+          <button type="submit" class="login-btn" id="login-btn">SIGN IN</button>
+          <a href="../forgotpass/index.html">FORGOT PASSWORD?</a>
+        </form>
+        <!-- <div class="forgot-pass-style"> -->
+          <!-- <a href="../forgotpass/index.html">FORGOT PASSWORD?</a> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

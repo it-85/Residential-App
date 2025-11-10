@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Credentials</title>
+  <link rel="stylesheet" href="../../../shared/styles/global-style.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Leaflet JS Import -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+  <div id="wrapper">
+    <div class="ip-credentials-container">
+      <div class="linear"></div>
+      <div class="ip-credentials-form-container">
+        <h1 class="form-title">Input Credentials</h1>
+        <form class="ip-credentials-form">
+          <input type="text" class="ip-firstname" id="owner_first_name" placeholder="First Name" required />
+          <input type="text" class="ip-lastname" id="owner_last_name" placeholder="Last Name" required />
+          <input type="text" class="ip-estabname" id="establishment_name" placeholder="Establishment Name" required />
+          <input type="text" class="ip-cpnumber" id="contact_number" inputmode="numeric" pattern="[0-9]{11}" maxlength="11" placeholder="Contact Number" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11);" required/>
+          <div class="location_modal">
+            <div class="country_field_orientation">
+              <input type="text" class="ip-country" id="country" placeholder="Country" required readonly/>
+            </div>
+            <div class="city_field_orientation">
+              <input type="text" class="ip-province" id="province" placeholder="Province" required readonly/>
+              <input type="text" class="ip-municipality" id="municipality" placeholder="Municipality" required readonly/>
+            </div>
+            <div id="map">
+            </div>
+          </div>
+          <button type="submit" class="login-btn" id="submit">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>

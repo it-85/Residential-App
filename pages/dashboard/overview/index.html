@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Dashboard</title>
+
+  <!-- Leaflet JS Import -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Leaflet Routing Machine Import -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+  <link rel="stylesheet" href="../../../shared/styles/global-style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <div class="dashboard-alignment">
+        <img src="../../../assets/img/logo-establishment.png" class="estab-logo" alt="logo">
+        <h1 class="app-title">Dashboard</h1>
+      </div>       
+      <div class="right-actions">
+        <a href="../profile/index.html">
+          <img src="../../../assets/img/profile-logo.png" class="profile-logo" alt="profile"/>
+          <p>My Profile</p>
+        </a>
+        <button class="logout-button-alignment" id="logout-button">
+          <img src="../../../assets/img/logout-icon.png" class="logout-icon" alt="logout"/>
+          <p>Logout</p>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="upper_section" class="upper-section">
+        <div class="device-status">
+          <h2>Device Status</h2>
+          <div class="status-card">
+            <div id="status_container" class="status-container">
+              <strong>Status: </strong>
+              <div class="status-indicator" id="status_indicator"></div>
+              <p id="status_text"></p>
+            </div>
+            <div id="last_active_container" class="last-active-container">
+              <strong>Last Active: </strong>
+              <span id="last_active"></span>
+            </div>
+          </div>
+        </div>
+        <div class="sensor-reading">
+          <h2>Sensor Reading</h2>
+          <div class="sensor-card">
+            <div id="temp_container" class="temp-container">
+              <div class="status-indicator" id="temp_indicator"></div>
+              <strong>TEMP:</strong>
+              <p id="temp_value"></p>
+            </div>
+            <div id="humid_container" class="humid-container">
+              <div class="status-indicator" id="humid_indicator"></div>
+              <strong>HUMID:</strong>
+              <p id="humid_value"></p>
+            </div>
+            <div id="aqi_container" class="aqi-container">
+              <div class="status-indicator" id="aqi_indicator"></div>
+              <strong>AQI:</strong>
+              <p id="aqi_value"></p>
+            </div>
+          </div>
+        </div>
+        <div class="bfp-route">
+          <h2>BFP Route</h2>
+          <p class="small-hint">Showing nearest BFP station in your municipality.</p>
+          <div id="bfp_map" style="height: 260px; border-radius: 12px; overflow: hidden;"></div>
+        </div>
+      </section>
+
+      <section id="lower_section" class="lower-section">
+        <div class="alert-history">
+          <h2>Alert History</h2>
+          <div class="filter">
+            <label for="histType">Type:</label>
+            <select name="histType" id="histType">
+              <option value="all">All</option>
+              <option value="Tampering">Tampering</option>
+              <option value="Cigarette">Cigarette</option>
+              <option value="Vape">Vape</option>
+              <option value="Fire">Fire</option>
+            </select>
+          </div>
+        </div>
+        <div class="history-list-container">
+          <table class="history-table" id="history_table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Time</th>
+                <th>Date</th>
+              </tr>
+            <thead>
+            <tbody id="history_body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="alert_overlay">
+    <div id="alert_modal">
+      <div id="alert_modal_header">
+        <button id="close_modal_button">&#10060;</button>
+      </div>
+      <div id="alert_modal_body">
+        <div id="alert_details">
+          <div id="alert_type_container" class="alert-type-container">
+            <p>Type of Alert</p>
+            <p id="alert_type">Alert</p>
+          </div>
+          <div id="alert_date_container" class="alert-date-container">
+            <p>Date</p>
+            <p id="alert_date">January 01, 1999</p>
+          </div>
+          <div id="alert_time_container" class="alert-time-container">
+            <p>Time</p>
+            <p id="alert_time">12:00 PM</p>
+          </div>
+        </div>
+        <div id="image_container">
+          <div>
+            <button id="prev_img_button">&larr;</button>
+            <img src="../../../assets/img/no-image.png" alt="Image" id="img_holder"/>
+            <button id="next_img_button">&rarr;</button>
+          </div>
+          <p><span id="img_counter">1</span>/5</p>
+        </div>
+        <button id="delete_button">DELETE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script type="module" src="./script.js"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../../shared/styles/global-style.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+  <!-- Style this loading later. -->
+  <div id="loading"><h1>Loading</h1></div>
+  <div id="wrapper" style="display: none;">
+    <header>
+      <nav>
+        <ul>
+          <div class="left-actions">
+            <img src="../../../assets/img/back-icon.png" alt="back-icon" class="back-icon" id="back-function">
+            <div class="profile-alignment">
+              <img src="../../../assets/img/profile-logo.png" class="profile-logo" alt="profile"/>
+              <p><span>My Profile</span></p>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- PROFILE MAIN PAGE -->
+    <main class="profile-container">
+
+      <h1 class="profile-title">Account Info:</h1>
+      <div class="profile-item">
+        <p>Name: <span id="name"></span></p>
+        <div id="pop-up" class="pop-up">
+          <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" id="edit_name_button">
+        </div>
+      </div>
+
+      <div class="profile-item">
+        <p>Email: <span id="email"></span></p>
+        <div id="pop-up" class="pop-up">
+          <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" id="edit_email_button">
+        </div>
+      </div>
+
+      <div class="profile-item">
+        <p>Res. Name: <span id="establishment_name"></span></p>
+        <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" id="edit_establishment_name_button">
+      </div>
+
+      <div class="profile-item">
+        <p>Phone Number: <span id="contact_number"></span></p>
+        <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" id="edit_contact_number_button">
+      </div>
+
+      <!--
+      <div class="profile-item">
+        <p>Password: </p>
+        <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" onclick="ChangePassword()">
+      </div>
+    -->
+
+      <div id="location" class="profile-item">
+        <p>Address: <span id="municipality"></span>, <span id="province"></span>, <span id="country"></span></p>
+        <div id="pop-up" class="pop-up">
+          <img src="../../../assets/img/edit icon.png" alt="edit icon" class="edit-icon" id="edit_location_button">
+        </div>
+      </div>
+
+      <div id="map" class="profile-item">
+      </div>
+
+      <!-- PROFILE EDIT MODAL BOX -->
+
+      <!-- MODAL BOX OPACITY BACKGROUND OVERLAY -->
+      <div class="overlay" id="overlay"></div>
+
+      <!-- EDIT NAME MODAL -->
+      <div class="modal" id="changeNameModal">
+        <h2>Change Name</h2>
+        <form action="">
+          <input type="text" id="firstName" placeholder="Enter First Name">
+
+          <input type="text" id="surname" placeholder="Enter Surname">
+
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn" >Cancel</button>
+            <button type="button" class="change-btn" id="change_name_button">Change</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal" id="changeEmailModal">
+        <h2>Change Email</h2>
+        <form action="">
+          <input type="email" id="email_input" placeholder="Enter Email">
+
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn">Cancel</button>
+            <button type="button" class="change-btn" id="change_email_button">Change</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- EDIT EST.NAME MODAL -->
+      <div class="modal" id="changeEstNameModal">
+        <h2>Change Residential Name</h2>
+        <form action="">
+          <input type="text" id="estName" placeholder="Enter New Res. Name">
+
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn">Cancel</button>
+            <button type="button" class="change-btn" id="change_est_name_button">Change</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- EDIT PHONE NUMBER -->
+       <div class="modal" id="changePNumModal">
+          <h2>Change Phone Number</h2>
+          <form action="">
+            <input type="text" id="contactNumber" class="ip-pnumber" placeholder="Enter New Number" inputmode="numeric" pattern="[0-9]{11}" maxlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11);">
+
+            <div class="modal-buttons">
+              <button type="button" class="cancel-btn">Cancel</button>
+              <button type="button" class="change-btn" id="change_cn_button">Change</button>
+            </div>
+
+          </form>
+       </div>
+
+       <!-- EDIT/CHANGE PASSWORD -->
+       <div class="modal" id="changePassModal">
+         <h2>Change Password</h2>
+         <form action="">
+            <div class="password-container">
+              <input type="password" class="ip-cpassword" placeholder="Current Password" id="currentPassword">
+              <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword1"></i>
+            </div>      
+
+            <div class="password-container">
+              <input type="password" class="ip-cpassword" placeholder="New Password" id="newPassword">
+              <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword2"></i>
+            </div>
+
+            <div class="password-container">
+              <input type="password" class="ip-cpassword" placeholder="Confirm Password" id="confirmPassword">
+              <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword3"></i>
+            </div>       
+
+            <div class="modal-buttons">
+              <button type="button" class="cancel-btn">Cancel</button>
+              <button type="button" class="change-btn">Change</button>
+            </div>
+         </form>
+       </div>
+
+          <!-- EDIT/CHANGE ADDRESS OR LOCATION -->
+        <div class="modal" id="changeLocationModal">
+          <!-- <input type="text" class="ip-newaddress" placeholder="Enter New Address" id=""> -->
+          <h2>Choose New Pinned Location</h2>
+
+          <div id="map1"></div>
+
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn">Cancel</button>
+            <button type="button" class="change-btn" id="change_loc_button">Change</button>
+          </div>
+        </div>
+
+    </main>
+
+  </div>
+  
+  <script type="module" src="script.js"></script>
+</body>
+</html>
