@@ -1,158 +1,309 @@
-#wrapper{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* ==========
+   BASE STYLE
+   ========== */
+#wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
+.ip-credentials-container {
+  width: 60vw;
+  /* height: 80vh; */
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px 3px var(--color-black-shadow);
+  /* overflow: hidden; */
+  background: var(--color-white);
+}
+
+/* Gradient panel */
 .linear {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    width: 50%;
-    background: linear-gradient(
-        to left,
-        #ff5656,
-        #ff8746,
-        #ffea00,
-        #e06f1e,
-        #c99034
-    );
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  background: linear-gradient(
+    to left,
+    #ff5656,
+    #ff8746,
+    #ffea00,
+    #e06f1e,
+    #c99034
+  );
 }
 
-.form-title{
-    font-size: 3rem;
+/* Right form section */
+.ip-credentials-form-container {
+  background: var(--login-form-bg-color);
+  width: 50%;
+  padding: 5rem 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
 }
 
-.ip-credentials-container{
-    width: 60vw;
-    height: 80vh;
-
-    box-shadow: 3px 3px 8px 3px var(--color-black-shadow);
-    border-radius: 8px;
-
-    display: flex;
+.form-title {
+  font-size: 3rem;
+  text-align: center;
 }
 
-.ip-credentials-form-container{
-    background: var(--login-form-bg-color);
-
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-
-    width: 50%;
-    padding: 5rem 8rem;
-    gap: 2.5rem;
-
-    display: flex;
-    flex-direction: column;
+.ip-credentials-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
 }
 
-.ip-credentials-form{
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-}
-
+/* Input styles */
 .ip-firstname,
 .ip-lastname,
 .ip-estabname,
-.ip-cpnumber{
-    padding: 1.5rem;
-
-    width: 100%;
-
-    background: rgba(0, 0, 0, 0.1);
-
-    border-radius: 1.2rem;
-    border: none;
-    
-    font-size: 1.5rem;
-    font-weight: 700;
+.ip-cpnumber {
+  width: 150%;
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .ip-firstname::placeholder,
 .ip-lastname::placeholder,
 .ip-estabname::placeholder,
-.ip-cpnumber::placeholder{
-    color: rgba(0, 0, 0, 0.8);
+.ip-cpnumber::placeholder {
+  color: rgba(0, 0, 0, 0.8);
 }
 
-.location_modal{
-    background: var(--color-white);
-    width: 28vw;
-    height: 35vh;
-    border-radius: 1.5rem;
-
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    gap: 1rem;
+/* Location box */
+.location_modal {
+  background: var(--color-white);
+  width: 28vw;
+  /* height: 35vh; */
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
 }
 
-.country_field_orientation{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.city_field_orientation{
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+.country_field_orientation,
+.city_field_orientation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .ip-country,
 .ip-province,
-.ip-municipality{
-    padding: 1rem;
-    width: 50%;
-
-    background: var(--color-input-bg);
-    border: none;
-    border-radius: 1.2rem;
-
-    font-size: 1.5rem;
-    font-weight: 700;
+.ip-municipality {
+  padding: 1rem;
+  width: 50%;
+  background: var(--color-input-bg);
+  border: none;
+  border-radius: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .ip-country::placeholder,
 .ip-province::placeholder,
-.ip-municipality::placeholder{
-    color: rgba(0, 0, 0, 0.4);
+.ip-municipality::placeholder {
+  color: rgba(0, 0, 0, 0.4);
 }
 
-#map{
-    width: 100%;
-    height: 100%;
-    /* background: red; To Visualize Size Only */
-    border-radius: 1.5rem;
+/* MAP STYLE — fixed responsive height */
+#map {
+  width: 100%;
+  height: 30rem;
+  /* min-height: 20rem; */
+  border-radius: 1.5rem;
+  background: #f4f4f4; /* fallback for visibility before load */
 }
 
-.login-btn{
+/* Submit button */
+.login-btn {
   padding: 1rem;
   width: 80%;
-
-  background-color: #EFBD46;
-
+  background-color: #efbd46;
   font-size: 1.8rem;
   font-weight: 700;
-
   border: none;
-  border-radius: 13px;
-
+  border-radius: 1.3rem;
   cursor: pointer;
+  transition: background 0.25s ease;
 }
 
-.login-btn:hover{
+.login-btn:hover {
   background-color: #cca240;
+}
 
-  transition: background ease 250ms;
+/* ===========================
+   💻 RESPONSIVE BREAKPOINTS
+   =========================== */
+
+/* Medium screens (tablets & small laptops) */
+@media (max-width: 1024px) {
+  .ip-credentials-container {
+    width: 80vw;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .linear {
+    width: 100%;
+    height: 15rem;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .ip-credentials-form-container {
+    width: 100%;
+    padding: 4rem 6rem;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .form-title {
+    font-size: 2.6rem;
+  }
+
+  .ip-firstname,
+  .ip-lastname,
+  .ip-estabname,
+  .ip-cpnumber {
+    width: 100%;
+  }
+
+
+  .location_modal {
+    width: 100%;
+    height: auto;
+  }
+
+  .ip-country,
+  .ip-province,
+  .ip-municipality {
+    width: 100%;
+  }
+
+  .city_field_orientation {
+    flex-direction: column;
+  }
+
+  #map {
+    height: 22rem;
+  }
+}
+
+/* Tablets and large phones */
+@media (max-width: 768px) {
+  #wrapper {
+    padding: 1.5rem;
+  }
+
+  .ip-credentials-container {
+    width: 90vw;
+    height: auto;
+  }
+
+  .linear {
+    height: 12rem;
+  }
+
+  .ip-credentials-form-container {
+    padding: 3rem 4rem;
+    gap: 2rem;
+  }
+
+  .form-title {
+    font-size: 2.4rem;
+  }
+
+  .ip-firstname,
+  .ip-lastname,
+  .ip-estabname,
+  .ip-cpnumber {
+    font-size: 1.4rem;
+  }
+
+  .location_modal {
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  #map {
+    height: 20rem;
+  }
+
+  .login-btn {
+    width: 90%;
+    font-size: 1.6rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  #wrapper {
+    padding: 1rem;
+  }
+
+  .ip-credentials-container {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .linear {
+    display: none; /* hide decorative gradient for small screens */
+  }
+
+  .ip-credentials-form-container {
+    width: 100%;
+    padding: 2rem;
+    box-shadow: none;
+  }
+
+  .form-title {
+    font-size: 2rem;
+  }
+
+  .ip-firstname,
+  .ip-lastname,
+  .ip-estabname,
+  .ip-cpnumber {
+    padding: 1.2rem;
+    font-size: 1.4rem;
+  }
+
+  .location_modal {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .ip-country,
+  .ip-province,
+  .ip-municipality {
+    width: 100%;
+    font-size: 1.3rem;
+  }
+
+  .city_field_orientation {
+    flex-direction: column;
+  }
+
+  #map {
+    height: 18rem;
+  }
+
+  .login-btn {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
 }

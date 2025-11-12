@@ -1,108 +1,97 @@
+/* Base layout */
 #wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
 }
 
 /* HEADER NAVIGATION BAR STYLE */
 header {
-    background-color: #f25c05; /* orange bar */
-    color: #fff;
+  background-color: #f25c05;
+  color: #fff;
 }
 
 header > nav > ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    padding: 1.1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 1.1rem 2rem;
 }
 
-header a { 
-    color: #fff; 
-    text-decoration: none; 
-    font-size: 2.5rem; 
+.left-actions {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
 }
 
-.left-actions{
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-}
-
-.back-icon{ width: 3.5rem; }
-
-.profile-logo { width: 7rem; }
-
-.profile-alignment{
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 3rem;
-}
-
-/* BACK FUNCTION STYLE */
-#back-function{
+.back-icon {
+  width: 2.3rem;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
-#back-function:hover{
+.back-icon:hover {
   transform: scale(1.25);
 }
 
-/* MAIN CONTENT PROFILE STYLE */
-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2.2rem;
-    width: 85%;
-    padding: 2rem 10rem;
+.profile-logo {
+  width: 4rem;
 }
 
-.profile-title{
-    font-size: 4rem;
+.profile-alignment {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.3rem;
+}
+
+/* MAIN CONTENT PROFILE STYLE */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.2rem;
+  padding: 2rem;
+}
+
+.profile-title {
+  font-size: 2.5rem;
+  width: 50vw;
+  text-align: center;
 }
 
 .profile-item {
+  width: 50vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #fff;
-  padding: 1.8rem 2.4rem; 
+  padding: 1rem 2rem;
   border-radius: 1.5rem;
   box-shadow: 0 0.9rem 1.2rem rgba(0, 0, 0, 0.1);
 }
 
 .profile-item p {
-  font-size: 2.4rem; 
+  font-size: 1.6rem;
   margin: 0;
 }
 
-/* ✏️ Edit icon */
 .edit-icon {
-  width: 3rem; /* 20px ×1.5 */
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
   transition: transform 0.2s ease;
-  /* border: 0.15rem solid black; */
 }
 
 .edit-icon:hover {
   transform: scale(1.2);
 }
 
-/* 🗺 MAP STYLE */
-#location {
-  width: 100%;
-  height: 50%;
-  /* margin-bottom: 2.4rem; */
-}
-
+/* MAP STYLE */
 #map {
-  width: 100%;
+  width: 50vw;
   height: clamp(20rem, 25rem, 30rem);
 }
 
@@ -110,15 +99,12 @@ main{
 .overlay {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 400;
 }
 
-/* Modal box */
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -126,13 +112,12 @@ main{
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 3rem 3.75rem; /* 20×1.5, 25×1.5 */
-  border-radius: 1.8rem; /* 12×1.5 */
+  padding: 3rem 3.75rem;
+  border-radius: 1.8rem;
   box-shadow: 0 0.9rem 1.5rem rgba(0, 0, 0, 0.2);
   width: 80%;
-  max-width: 45rem; /* 300×1.5 */
+  max-width: 45rem;
   z-index: 401;
-  text-align: left;
 }
 
 .modal h2 {
@@ -141,29 +126,23 @@ main{
   font-size: 3rem;
 }
 
-.modal label {
-  display: block;
-  margin: 1.2rem 0 0.6rem;
-  font-size: 2.1rem;
-}
-
 .modal input {
   width: 100%;
   padding: 0.9rem 1.2rem;
   border: 0.15rem solid #ccc;
   border-radius: 0.9rem;
   margin-bottom: 1.5rem;
-  font-size: 2.1rem;
+  font-size: 2rem;
 }
 
-/* Buttons */
 .modal-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
 }
 
-.cancel-btn, .change-btn {
+.cancel-btn,
+.change-btn {
   border: none;
   background: none;
   font-size: 2.2rem;
@@ -184,33 +163,165 @@ main{
   text-decoration: underline;
 }
 
-/* PASSWORD HIDE STYLE */
+/* Password container */
 .password-container {
   position: relative;
   width: 100%;
 }
 
-.password-container input {
-  max-width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 5.2rem;
-}
-
 .password-container .toggle-password {
   position: absolute;
   right: 1.5rem;
-  top: 40%;
+  top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   color: #888;
-  font-size: 2.2rem;
-}
-
-.password-container .toggle-password:hover {
-  color: #000;
+  font-size: 2rem;
 }
 
 #map1 {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 30rem;
+  border-radius: 1.5rem;
+}
+
+/* =====================
+   📱 RESPONSIVE DESIGN
+   ===================== */
+
+/* Tablets and small laptops */
+@media (max-width: 1024px) {
+  header > nav > ul {
+    padding: 1rem 1.5rem;
+  }
+
+  .left-actions {
+    gap: 2.5rem;
+  }
+
+  .profile-alignment {
+    font-size: 2rem;
+  }
+
+  .profile-title,
+  .profile-item {
+    width: 80%;
+  }
+
+  #map {
+    width: 80%;
+  }
+
+  .modal {
+    width: 90%;
+    padding: 2.5rem;
+  }
+
+  .modal h2 {
+    font-size: 2.4rem;
+  }
+}
+
+/* Large phones & phablets */
+@media (max-width: 768px) {
+  .left-actions {
+    gap: 1.5rem;
+  }
+
+  .profile-alignment {
+    flex-direction: row;
+    font-size: 1.8rem;
+  }
+
+  .profile-title {
+    font-size: 2.2rem;
+  }
+
+  .profile-item {
+    width: 90%;
+    /* flex-direction: column; */
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .profile-item p {
+    font-size: 1.5rem;
+  }
+
+  .edit-icon {
+    align-self: flex-end;
+  }
+
+  #map {
+    width: 90%;
+    height: 22rem;
+  }
+
+  .modal {
+    width: 90%;
+    padding: 2rem;
+  }
+
+  .modal h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  header > nav > ul {
+    padding: 1rem;
+  }
+
+  .back-icon {
+    width: 2rem;
+  }
+
+  .profile-logo {
+    width: 3.5rem;
+  }
+
+  .profile-alignment p span {
+    font-size: 1.8rem;
+  }
+
+  .profile-title {
+    font-size: 2rem;
+  }
+
+  .profile-item {
+    width: 95%;
+    padding: 1rem 1.5rem;
+  }
+
+  #map {
+    width: 95%;
+  }
+
+  .profile-item p {
+    font-size: 1.4rem;
+  }
+
+  .edit-icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 2rem;
+  }
+
+  .modal h2 {
+    font-size: 2rem;
+  }
+
+  .modal input {
+    font-size: 1.6rem;
+  }
+
+  .cancel-btn,
+  .change-btn {
+    font-size: 1.8rem;
+  }
 }
