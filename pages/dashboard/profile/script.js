@@ -38,7 +38,7 @@ const change_pass_modal     = document.getElementById("changePassModal");
 const change_location_modal = document.getElementById("changeLocationModal");
 
 const edit_name_button               = document.getElementById("edit_name_button");
-const edit_email_button              = document.getElementById("edit_email_button");
+// const edit_email_button              = document.getElementById("edit_email_button");
 const edit_establishment_name_button = document.getElementById("edit_establishment_name_button");
 const edit_contact_number_button     = document.getElementById("edit_contact_number_button");
 const edit_location_button           = document.getElementById("edit_location_button");
@@ -124,10 +124,10 @@ edit_name_button.addEventListener("click", () => {
   document.body.style.overflow = "hidden";
 });
 
-edit_email_button.addEventListener("click", () => {
-  change_email_modal.style.display = "block";
-  overlay.style.display = "block";
-});
+// edit_email_button.addEventListener("click", () => {
+  // change_email_modal.style.display = "block";
+  // overlay.style.display = "block";
+// });
 
 edit_establishment_name_button.addEventListener("click", () => {
   change_est_name_modal.style.display = "block";
