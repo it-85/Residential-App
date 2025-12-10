@@ -321,11 +321,11 @@ function setupMQTT(deviceId) {
   const client = mqtt.connect(brokerUrl, options);
 
   client.on("connect", () => {
-    console.log("✅ Web Dashboard connected to MQTT");
+    // console.log("✅ Web Dashboard connected to MQTT");
     client.subscribe(`est/device/${deviceId}/heartbeat`);
     client.subscribe(`est/device/${deviceId}/readings`);
     client.subscribe(`est/device/${deviceId}/alerts`);
-    console.log("📡 Subscribed to:", `est/device/${deviceId}/#`);
+    // console.log("📡 Subscribed to:", `est/device/${deviceId}/#`);
   });
 
   // helpers
@@ -452,7 +452,7 @@ function renderHistoryTable(data) {
     alert_item_type.classList.add("list-item-type");
 
     let alert_t = alert.alert_type;
-    console.log(alert);
+    // console.log(alert);
     if(alert.fire_severity == "High") {
       alert_t = alert.alert_type + " (HIGH)";
     }
