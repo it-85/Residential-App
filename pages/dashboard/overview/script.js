@@ -453,9 +453,9 @@ function renderHistoryTable(data) {
 
     let alert_t = alert.alert_type;
     // console.log(alert);
-    if(alert.fire_severity == "High") {
-      alert_t = alert.alert_type + " (HIGH)";
-    }
+    // if(alert.fire_severity == "High") {
+      // alert_t = alert.alert_type + " (HIGH)";
+    // }
     alert_item_type.textContent = alert_t;
 
     const alert_item_date = document.createElement("p");
